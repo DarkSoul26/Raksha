@@ -39,7 +39,7 @@ mongoose.connect(process.env.ATLAS,{useNewUrlParser: true, useUnifiedTopology: t
 
 mongoose.set("useCreateIndex", true);
 
-// CREATION OF SCHEMA FOR DATABASE
+// CREATION OF SCHEMA FOR USERS
 const userSchema= new mongoose.Schema({
   email: String,
   password: String,
@@ -48,6 +48,7 @@ const userSchema= new mongoose.Schema({
 
 });
 
+// CREATION OF SCHEMA FOR VICTIMS 
 const victimSchema= new mongoose.Schema({
   saviersName: String,
   location: {
@@ -102,7 +103,7 @@ return cb(err,user);
 }
 ));
 
-
+// FOR IMAGES TO BE STORED ON THE BACKEND
 //Define storage space for the image
 const storage=multer.diskStorage({
 
@@ -180,20 +181,21 @@ passport.authenticate('google', { failureRedirect: '/login'}),
 );
 
 
-
+//login route
 app.get("/login", function(req, res){
 
   res.render("login");
 
 });
 
-
+//register route
 app.get("/register", function(req, res){
 
   res.render("register");
 
 });
 
+//logout 
 app.get("/logout", function(req,res){
   //deauthenticate user
 
@@ -202,10 +204,12 @@ app.get("/logout", function(req,res){
 
 });
 
+//contact the developers
 app.get("/contact",function(req,res){
   res.render("contact");
 });
 
+//submit the donate form
 app.get("/submit",function(req,res){
 if(req.isAuthenticated()){
   res.render("submit");
@@ -215,11 +219,12 @@ else{
 }
 });
 
+
 app.post("/submit", function(req,res){
 
   const submittedMoney = req.body.money;
 
-  
+  //serach a particular user
   User.findById(req.user.id, function(err, foundUser){
     if(err){
       console.log(err);
@@ -239,8 +244,6 @@ app.post("/submit", function(req,res){
 
 
 app.post("/register",function(req,res){
-
-
 
 User.register({username: req.body.username}, req.body.password, function(err,user){
   if(err){
@@ -306,6 +309,9 @@ app.get("/homeAuth",function(req,res){
     res.render("homeAuth");
 });
 
+
+
+//listening on port by heroku or on port 3000 locally
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
