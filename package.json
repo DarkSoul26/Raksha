@@ -4,7 +4,7 @@
   "description": "For non profit Organization",
   "main": "app.js",
   "scripts": {
-   "start": "node index.js"
+   "start": "node app.js"
 },
   "author": "Rashi Singh and Sanchit Kalsi",
   "license": "ISC",
