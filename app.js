@@ -267,19 +267,29 @@ app.post("/login",function(req,res){
     password: req.body.password
   });
   //login method comes from passport
-  req.login(user, function(err){
-  if(err) {
-    res.redirect("/login");
-    console.log(err);
-  }
-  else{
-    passport.authenticate("local")(req, res, function(){
-  //hold on the cookie . tells server tht user is autherized\
-  res.redirect("/homeAuth");
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/homeAuth');
     });
-  }
-  })
+  })(req, res, next);
 });
+
+//   req.login(user, function(err){
+//   if(err) {
+//     res.redirect("/login");
+//     console.log(err);
+//   }
+//   else{
+//     passport.authenticate("local")(req, res, function(){
+//   //hold on the cookie . tells server tht user is autherized\
+//   res.redirect("/homeAuth");
+//     });
+//   }
+//   })
+// });
 
 
 app.post("/locate",upload.single('image'),function(req,res){
