@@ -175,7 +175,7 @@ app.get("/auth/google/donate",
 passport.authenticate('google', { failureRedirect: '/login'}),
   function(req,res){
     //successful authentication
-    res.redirect('/submit');
+    res.redirect('/homeAuth');
   }
 );
 
