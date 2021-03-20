@@ -4,13 +4,13 @@
   "description": "For non profit Organization",
   "main": "app.js",
   "scripts": {
-"dev": "react-scripts start",
-"start": "serve -s build",
-"build": "react-scripts build",
-"test": "react-scripts test --env=jsdom",
-"eject": "react-scripts eject",
-"heroku-postbuild": "npm run build"
-},
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+  },
   "author": "Rashi Singh and Sanchit Kalsi",
   "license": "ISC",
   "engines": {
