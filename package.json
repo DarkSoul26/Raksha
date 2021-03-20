@@ -10,7 +10,7 @@
 "test": "react-scripts test --env=jsdom",
 "eject": "react-scripts eject",
 "heroku-postbuild": "npm run build"
-}
+},
   "author": "Rashi Singh and Sanchit Kalsi",
   "license": "ISC",
   "engines": {
