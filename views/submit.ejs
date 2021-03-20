@@ -1,0 +1,135 @@
+<!-- HEADER FILES INCLUDED -->
+<%- include('partials/header') %>
+
+<div class="text-center m-4">
+<img src="images/social-care.png" height="200" alt="we love and care">
+<h1 class="display-3">Enter details</h1>
+<h3 class="display-5">Share, Care</h3>  
+</div>
+
+<!--SUBMITTION FORM FOR THE DONATION -->
+<div class="container">
+  <div class="jumbotron">
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input
+          type="text" 
+          class="form-control"
+          id="validationCustom01"
+          placeholder=" Example: Sanchit"
+          name="firstName"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom02"
+          placeholder="Example: Kalsi"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustomUsername" class="form-label"
+          >Email</label
+        >
+        
+        <!-- VALIDATION FOR THE EMAIL -->
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input
+            type="text"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <div class="invalid-feedback">Please choose a email.</div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom03"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid city.</div>
+      </div>
+      <div class="col-md-6 mt-4 text-center">
+        <label for="validationCustom04" class="form-label">State</label>
+        <select class="form-select" id="validationCustom04" required>
+          <option selected disabled value="">Choose...</option>
+          <option>AP  |Andhra Pradesh </option>
+          <option>MH  |Maharashtra</option>
+          <option>AR  |Arunachal Pradesh</option>
+          <option>AS  |Assam </option>  
+          <option>BR  |Bihar</option>
+          <option>GJ  |Gujrat</option>
+          <option>HR  |Haryana
+          </option>
+          <option>
+            JH  |Jharkhand
+          </option>
+          <option>PJ  |Punjab
+          </option>
+          <option >KA   |Karnataka</option>
+        </select>
+
+        <!-- IF THE STATE IS NOT VALID -->
+        <div class="invalid-feedback">Please select a valid state.</div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom05" class="form-label">Pincode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom05"
+          required
+        />
+
+        <!-- IF THE PIN CODE IS NOT VALID -->
+        <div class="invalid-feedback">Please provide a valid pincode.</div>
+      </div>
+
+      <!-- FORM CHECKING -->
+      <div class="col-12 m-1">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="invalidCheck"
+            required
+          />
+          <label class="form-check-label" for="invalidCheck">
+            <strong>Agree to terms and conditions</strong>
+          </label>
+          <div class="invalid-feedback">You must agree before submitting.</div>
+        </div>
+      </div>
+    </form>
+
+
+    <form action="/submit" method="POST" class="text-center">
+      <div class="form-group col-md-12 mb-3">
+        <input
+          type="text"
+          class="form-control text-center"
+          name="money"
+          placeholder="Enter the Amount"
+        />
+      </div>
+      <button type="submit" class="btn btn-dark ">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER FILES INCLUDED -->
+<%- include('partials/footer') %>

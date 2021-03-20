@@ -1,0 +1,48 @@
+<%- include("partials/header"); -%>
+
+<div class="text-center m-4">
+    <img src="images/locate.png" height="200" alt="we love and care">
+    <h1 class="display-3">Locate the needy</h1>
+</div>
+<div class="container mt-5 jumbotron text-center">
+
+    <!-- LOGIN FORM -->
+    <div class="row">
+        <div class="col-sm mr-5 ml-5">
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Makes POST request to /login route -->
+                    
+                    <form class="" action="/locate" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="font-weight-bold mt-2">Your Name</label>
+                            <input class="form-control" type="text" name="sName" />
+                            <label class="font-weight-bold mt-2">Location</label>
+                            <input class="form-control" type="text" name="postTitle" />
+                            <label for="validationCustom04" class="form-label font-weight-bold mt-2">Category</label>
+                            <select class="form-select m-3" name="ageCategory" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>Child</option>
+                                <option>Women</option>
+                                <option>Senior Citizen</option>
+                            </select>
+                            <br>
+                            <label class="font-weight-bold mt-2">Description</label>
+                            <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
+                            <label for="image" class="font-weight-bold mt-2">Upload Image</label>
+                            
+                            <input type="file" name="image" id="image" class="form-control-file">
+                        </div>
+                        <button class="btn btn-primary font-weight-bold" type="submitPost" name="button">
+                            Publish
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include("partials/footer"); -%>
