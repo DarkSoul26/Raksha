@@ -91,7 +91,7 @@ passport.deserializeUser(function(id, done){
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/donate",
+  callbackURL: "http://localhost:5000/auth/google/donate",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb){
@@ -314,7 +314,7 @@ app.get("/homeAuth",function(req,res){
 //listening on port by heroku or on port 3000 locally
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+  port = 5000;
 }
 
 app.listen(port,function(){
