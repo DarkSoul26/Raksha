@@ -91,14 +91,14 @@ passport.deserializeUser(function(id, done){
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:5000/auth/google/donate",
+  callbackURL: "https://rakshawe.herokuapp.com/auth/google/donate",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb){
   console.log(profile);
   
   User.findOrCreate({googleId: profile.id}, function(err,user){
-return cb(err,user);
+  return cb(err,user);
   });
 }
 ));
@@ -151,13 +151,23 @@ app.get("/donate", function(req,res){
 
 // HOME ROUTE
 app.get("/", function(req, res){
-  res.render("home");
+  if(req.isAuthenticated()){
+    res.render("homeAuth");
+  }
+  else{
+    res.render("/home");
+  }
+});
+
+app.get("/home", function(req, res){
+    res.render("home");
 });
 
 // ABOUT ROUTE
 app.get("/about", function(req, res){
   res.render("about");
 });
+
 app.get("/locate",function(req,res){
   if(req.isAuthenticated()){
   res.render("locate");
@@ -275,7 +285,7 @@ app.post("/login",function(req,res){
   else{
     passport.authenticate("local")(req, res, function(){
   //hold on the cookie . tells server tht user is autherized\
-  res.redirect("/homeAuth");
+      res.redirect("/homeAuth");
     });
   }
   })
