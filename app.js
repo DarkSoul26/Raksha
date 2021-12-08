@@ -92,12 +92,13 @@ passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: "https://rakshawe.herokuapp.com/auth/google/donate",
-  userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+  // passReqToCallback: true,
+  // userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
 function(accessToken, refreshToken, profile, cb){
   console.log(profile);
   
-  User.findOrCreate({googleId: profile.id}, function(err,user){
+  User.findOrCreate({username: profile.displayName, googleId: profile.id}, function(err,user){
   return cb(err,user);
   });
 }
@@ -155,7 +156,7 @@ app.get("/", function(req, res){
     res.render("homeAuth");
   }
   else{
-    res.render("/home");
+    res.render("home");
   }
 });
 
